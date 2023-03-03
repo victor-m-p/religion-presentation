@@ -1,0 +1,265 @@
+---
+title: "Mapping Religion"
+subtitle: "Inferring cultural landscapes with the inverse Ising model"
+format:
+  revealjs: 
+    auto-stretch: false
+    slide-number: true
+    chalkboard: 
+      buttons: false
+    preview-links: auto
+    logo: ../cmu.jpg
+    css: styles.css
+    footer: <https://github.com/victor-m-p/cultural-landscapes>
+resources:
+  - demo.pdf
+---
+
+# Agenda 
+- The Inverse Ising model in other fields 
+- Current approaches to Religion 
+- Methodological improvements 
+- Results (parameters, landscape, prediction)
+- Challenges & What's next?
+
+# Motivation
+
+::: {.fragment .fade-in-then-semi-out}
+- Religious culture is "multi-modal" (e.g. `social`, `epistemic`, `cognitive`) and high-dimensional
+:::
+
+::: {.fragment .fade-in-then-semi-out}
+- Often one (or a few) aspects studied in isolation, or a synthesis is attempted by arguing from isolated results 
+:::
+
+::: {.fragment .fade-in-then-semi-out}
+- Perhaps we cannot understand (religious) culture by considering traits in isolation. (inverse) `Ising model` been applied successfully in various domains. Why not networks of cultural (religious) beliefs?
+:::
+
+::: {.notes}
+- Not quite "multi-modal" but a lot of different aspects
+- High-dimensional meaning that many aspects define a civilization
+- Isolation
+  - e.g., ...
+- Landscape: we will get back to what we mean by a `landscape model`
+:::
+
+# Approaches to Religion {.smaller}
+::: {.column width="45%"}
+![](references/kevinbinz-overview.png)
+https://kevinbinz.com/2018/06/19/sequence-demystifying-religion/
+:::
+
+::: {.column width="5%"}
+:::
+
+::: {.column width="45%"}
+::: {.fragment .fade-in-then-semi-out}
+- `By-product` (`Cognitive`): 
+  - Focus: Religious `universals` 
+  - Example: `Intuitive Dualism`
+:::
+::: {.fragment .fade-in-then-semi-out}
+- `Adaptationist` (`Biology`): 
+  - Focus: `social` impact
+  - Example: ... 
+:::
+::: {.fragment .fade-in-then-semi-out}
+- `Cultural Evolution` (`Anthropology`):
+  - Focus: biodiversity
+  - Example: `Big Gods` 
+:::
+:::
+
+::: {.notes}
+- By-product: 
+ - religion is a by-product of (universal) cognitive processes
+ - intuitive dualism, anthropomorphism, theory of mind, ...
+
+- Adaptationist: 
+ - Is this just genetic rather than cultural selection?
+
+- Cultural Evolution: 
+  - Big Gods enable large-scale society (i.e., monitoring and punishment leads to prosocial behavior which is necessary for anonymous large-scale society, and which gives a selective advantage for groups who have these beliefs in inter-group conflict with groups that do not have these beliefs). NB: the `Big Gods` book draws upon both cultural evolutionary, and cognitive/psychological approaches. 
+
+- We are not biased towards any of these approaches, and include questions that are epistemic/cognitive (e.g. mind-body dualism), social (e.g. rituals), political (e.g. state support).
+:::
+
+## Social Landscapes
+::: {.column width="45%"}
+![](related/court.png){ width=400px }
+:::
+
+::: {.column width="45%"}
+![](related/court-independence.png){ width=500px }
+:::
+
+::: {.fragment .semi-out}
+"Statistical Mechanics of the US Supreme Court", Lee et al. (2015)
+:::
+
+::: {.notes}
+- $N = 9$ justices on the Rehnquist court. 
+- On the right: 
+  - Local fields ($h_i$) on top. Bias of a justice towards yes/no.
+  - Coupling ($J_{ij}$) on bottom. Coupling between justices. 
+- On the left: 
+  - Independent model (blue) versus Ising model (red) and data (green).
+  - The Ising model captures the data better (almost perfect). 
+:::
+
+## Neural Landscapes 
+::: {.column width="45%"}
+![](related/neurons-independence.png){ width=500px }
+:::
+
+::: {.column width="45%"}
+![](related/neurons.png){ width=400px }
+:::
+
+::: {.fragment .semi-out}
+"Weak pairwise correlations imply strongly correlated network states in a neural population", Schneidman et al. (2006)
+:::
+
+## The (unreasonable) effectiveness of the Ising model
+::: {.fragment .fade-in-then-semi-out}
+- In general, surface-level correlations and means can be misleading, and they do not imply the strongly coupled network states (e.g. specific configurations) that we observe.  
+:::
+
+::: {.fragment .fade-in-then-semi-out}
+- The Ising model can capture the underlying structure (in general, higher-order correlations come "along for the ride").
+:::
+
+::: {.fragment .fade-in-then-semi-out}
+- This works (unreasonably) well in various domains (e.g. `biological`, and `social` networks). 
+:::
+
+## The (inverse) Ising model {.smaller}
+- $J_{ij}$: the strength of the interaction between nodes $i$ and $j$. $J > 0$ positive coupling, $J < 0$ negative coupling. `Not the same as the surface-level correlation`.
+- $h_i$: The strength of the local (magnetic) field. Intrinsic bias in favor of being on rather than off (1/0, yes/no). `Not the same as the overall mean`.
+- Probability of a particular configuration is: 
+$$ P(\sigma_1, \sigma_2, \ldots, \sigma_N) = \frac{1}{Z} exp \left[ \sum_{i} h_i \sigma_i + \sum_{i > j} J_{ij}\sigma_i\sigma_j \right] $$
+- Symmetric, so $J_{ij} = J_{ji}$ (thus $i>j$). 
+
+## Challenges & Solutions
+- Previous work has used small $N$ where direct calculation is possible. $N$ parameters grows exponentially with $N$. 
+- Previous work has used complete and consistent data without obvious bias sources. 
+- Use of the Minimum Probability Flow (MPF) algorithm to infer the model parameters.
+- Regularization and cross-validation to avoid overfitting.
+- Re-weighting to correct for sampling bias. 
+- Consistent integration of partially observed data. 
+
+::: {.notes}
+- Courts (N=9) and Neurons (N=10). 
+- Courts and Neurons both "complete" (e.g. no missig records, NAN, or contested cases). 
+- Our case (N=20) and unknown data (e.g. Spartan child sacrifice) and bias (e.g. historical). 
+- MPF: General idea is that probability flows from observed states to neighboring states. 
+- Regularization: $L_2$-norm (Gaussian prior). 
+- 
+:::
+
+# Ways of approaching the landscape {.smaller}
+- We can look directly at pairwise couplings $J_{ij}$ and local fields $h_i$ 
+- We can use the model to predict unknown data 
+- We can look at the landscape that the pairwise couplings imply (globally, and locally) 
+- We can approach specific theories of religion and see how they fit into the landscape
+- (Maybe) the landscape can generate new ideas, or constrain theorizing
+
+
+## $J_{ij}$ and $h_i$ vs. surface-level features {.smaller} 
+![](cultural-landscapes/svg/figure3.svg){ width=100% }
+
+::: {.notes}
+- Shows the 15 strongest $J_{ij}$ and pairwise correlations.
+- In some cases surface-level correlations and means are a good guide to the underlying landscape. 
+  - e.g., ... 
+- In some cases they are not: 
+  - e.g., ...
+
+:::
+
+## Predicting unknown data {.smaller}
+
+::: {.fragment .fade-in}
+- Some facts about the cultural record are unknown to the field
+:::
+
+::: {.fragment .fade-in}
+- One example is the Archaic Spartan Cults (800BC-500BC)
+:::
+
+::: {.fragment .fade-in}
+- Coded in the DRH as unknown for: 
+  - Practice of `child sacrifice` 
+  - Requirement to participate in `small-scale rituals`
+:::
+
+::: {.fragment .fade-in}
+- Given the inferred landscape, and what we *do* know about the Spartans, we can provide a quantitative estimate
+:::
+
+::: {.fragment .fade-in}
+![](cultural-landscapes/spartan-predictions.png){ width=100% }
+:::
+
+## The Landscape of Religion
+![](cultural-landscapes/svg/figure4.svg){ width=100% }
+
+
+::: {.notes}
+- 150 highest-probability configurations
+- most correspond to observed religions (some more than one) but not all.
+- Some structure: 
+  - Yellow: tends early, pre-Axial, and indigenous. 
+  - Red: tends medium, Axial, highest-probability cluster. 
+  - Blue: tends late, development of monotheism, "flood plain".
+:::
+
+## Cultural Evolution {.smaller}
+![](cognitive-attractors/svg/local_global_stability.svg){ width=80% }
+
+::: {.notes}
+- Local stability vs. global stability. 
+- For shorter time-scales we need more than "hills" and "valleys": 
+ - a
+ - b 
+ - c 
+ - d 
+:::
+
+## Cultural Evolution {.smaller}
+![](cognitive-attractors/svg/Irish_Catholics_1017606.svg){ width=60%}
+
+::: {.notes}
+- Deterministic flow (Y-axis is probability). 
+- Traits are favored contingent on local region of the landscape: 
+  - IR - YD - C: ... 
+  - IR - NAN - QM - (OD, YD) - C: ... 
+:::
+
+## Fluidity of cultural belief systems 
+![](cognitive-attractors/svg/number_enforced_first_five.svg){ width=80%}
+
+
+## Theories of Religion {.smaller}
+::: {.fragment .fade-in-then-semi-out}
+![](cognitive-attractors/monitor-punish.png)
+:::
+
+::: {.fragment .fade-in-then-semi-out}
+![](cognitive-attractors/monitor-punish-conditional.png)
+:::
+
+
+# Conclusion {.smaller}
+
+# Appendix 
+
+## Questions 
+::: {.column width="48%"}
+![](cultural-landscapes/first_questions.png)
+:::
+
+::: {.column width="48%"}
+![](cultural-landscapes/next-questions.png)
+:::
