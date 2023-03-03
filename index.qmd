@@ -403,7 +403,7 @@ This is perhaps the most interesting technical innovation.
 
 
 ## $J_{ij}$ and $h_i$ vs. surface-level features {.smaller} 
-![](DAG/params-raw.svg){ width=90% }
+![](DAG/params-raw.svg){ width=85% }
 
 ::: {.notes}
 - Shows the 15 strongest $J_{ij}$ and pairwise correlations.
@@ -411,7 +411,7 @@ This is perhaps the most interesting technical innovation.
 :::
 
 ## $J_{ij}$ and $h_i$ vs. surface-level features {.smaller} 
-![](DAG/params-match-1.svg){ width=90% }
+![](DAG/params-match-1.svg){ width=85% }
 
 ::: {.notes}
 - 18-19: small-scale, large-scale rituals
@@ -420,14 +420,14 @@ This is perhaps the most interesting technical innovation.
 :::
 
 ## $J_{ij}$ and $h_i$ vs. surface-level features {.smaller} 
-![](DAG/params-match-2.svg){ width=90% }
+![](DAG/params-match-2.svg){ width=85% }
 
 ::: {.notes}
 - child sacrifice, adult sacrifice, castration, suicide 
 :::
 
 ## $J_{ij}$ and $h_i$ vs. surface-level features {.smaller} 
-![](DAG/params-nomatch-1.svg){ width=90% }
+![](DAG/params-nomatch-1.svg){ width=85% }
 
 ::: {.notes}
 - partial out this cluster of "extreme beliefs" although there is no correlation
@@ -595,14 +595,10 @@ Which practices most easily fit in with various systems?
 - Especially the monitoring appears to be "outsourceable" to the state. 
 :::
 
-## Secular institutions
-![](cognitive-attractors/monitor-punish-conditional.png){ width=100%}
-
-![](DAG/norenzayan3.svg){ width=40% fig-align='center' } 
-
 ::: {.notes}
 - Just wanted to tie this back to Norenzayan
 - Big Gods overall less likely in our landscape GIVEN state support (which we might take as a very rough proxy for secular institutions). 
+:::
 
 ## Fundamental & context-dependent constraints
 ![](cognitive-attractors/monitor-punish.png){ width=100% }
@@ -616,7 +612,8 @@ Which practices most easily fit in with various systems?
 
 # Next steps
 - How does landscape topology change with more questions?
-![](rank_vs_normp.svg){ width=65% fig-align='center' }
+
+![](rank_vs_normp.svg){ width=60% fig-align='center' }
 
 ::: {.notes}
 - We have some preliminary results suggesting that although the parameters shrink (because we control for increasingly more variables) the landscape becomes increasingly rugged. 
