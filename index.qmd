@@ -207,6 +207,27 @@ resources:
 - problem is that landscape lives in 20 dimensions. 
 :::
 
+# Most likely religion
+![](most_likely.svg){ width=100% }
+
+::: {.notes}
+- big monitoring/punishing Gods.
+- state support
+- ritualistic
+- could have gotten this with naive approaches
+:::
+
+# Least likely religion
+![](least_likely.svg){ width=100% }
+
+::: {.notes}
+- not just "flipped" (as independent)
+- e.g., adult sacrifice rare (so we would expect on)
+- but couples super strongly with child sacrifice 
+- so this is more inconsistent
+- still, does not tell us too much 
+::: 
+
 ## The "landscape" of religion
 ![](DAG/landscape_4.svg){ width=80% }
 
