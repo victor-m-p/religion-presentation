@@ -93,17 +93,19 @@ Societies are subject to multiple *intersecting forces and constraints* that *pu
 
 ## The Landscape View {.smaller}
 Societies are subject to multiple *intersecting forces and constraints* that *put demands on their features*. Some configurations better balance these constraints.  
-![](LICS/intro-7.svg){ width="80%" }
+![](LICS/intro-8.svg){ width="80%" }
 
 ## The Landscape View {.smaller}
 ::: {.column width="45%"}
 Societies are subject to multiple *intersecting forces and constraints* that *put demands on their features*. Some configurations better balance these constraints. 
 
 *Equilibrium points*: Locally (meta)stable solutions to the landscape. Interesting when multiple exist. 
+
+Parameters (*pairwise constraints* and *local fields*) imply a probability distriubtion over *configurations*
 :::
 
 ::: {.column width="45%"}
-![](fitness-landscape.png)
+![](LICS/intro-9.svg)
 :::
 
 ::: {.notes}
@@ -112,9 +114,13 @@ This we do not get directly from parameters.
 Interesting, e.g.:
 * We want to keep a system in a certain equilibrium
 * We want to push a system out of a bad equilibrium
+You could imagine this being interesting in many contexts: 
+e.g., we are looking at NSDUH now
+Drugs and mental health. 
 :::
 
-## keep following ...
+## Cultural Landscapes Paper
+... continue ...
 
 ## Social Landscapes
 ::: {.column width="45%"}
