@@ -36,7 +36,13 @@ laboratory of social minds
 
 ## Why does culture look this way?
 Standard social science approach:
-Linear (or logistic) regression.
+
+- Linear (or logistic) regression.
+
+::: {.notes}
+- might regress on time to approach causality from observations.
+- might perform experiments to get causality. 
+:::
 
 ## Why does culture look this way?
 ![](LICS/intro-1.svg){ width="85%" }
@@ -50,8 +56,17 @@ or even CAUSE this phenomenon.
 ## Why does culture look this way?
 ![](LICS/intro-2.svg){ width="85%" }
 
+
+::: {.notes}
+- or "predictors"
+:::
+
 ## Why does culture look this way?
 ![](LICS/intro-3.svg){ width="85%" }
+
+::: {.notes}
+- or say "cooperation dilemma" 
+:::
 
 ## Why does culture look this way?
 ![](LICS/intro-4.svg){ width="85%" }
@@ -74,6 +89,9 @@ Also cognitive underpinnings.
 
 ::: {.notes}
 Both directions have been stipulated. 
+Moralizing big Gods enable social complexity through resolving cooperation
+social complexity precedes moralizing big Gods. 
+Retractions and fist-fights. 
 :::
 
 ## Dangers 2: context-dependence
@@ -199,15 +217,74 @@ Did not face same challenges.
 - ...
 :::
 
-## Religious landscapes (DRH)
-![](pictures/DRH.png)
+## Religious Landscapes (DRH)
+![](LICS/drh-1.svg){ width=120% }
 
 ::: {.notes}
-- apply to cultural/religious system (religious landscape)
-- Santa Fe workshop. 
-- polls; place, text, group 
-- Ancient Egyptians, Aztecs, Temple of the Jedi
+- just crossed 1000 experts
+- centered around different polls
+- filled out by experts (contrary to e.g. Seshat)
 - Edward Slingerland, Rachel Spicer, Willis Monroe
+:::
+
+## Religious Landscapes (DRH)
+![](LICS/drh-2.svg){ width=120% }
+
+::: {.notes}
+- Religious Entry
+- From Bronze age religions to cybercults.
+:::
+
+## Interacting Constraints
+![](LICS/drh-3.svg){ width=120% }
+
+::: {.notes}
+- Religious group poll.
+- Centered around binary (yes-no questions)
+:::
+
+## Interacting Constraints
+![](LICS/drh-4.svg){ width=120% }
+
+::: {.notes}
+- Estimate how much (pos-neg) constrain each other
+- Do they want to align or anti-align
+:::
+
+## Interacting Constraints 
+![](LICS/drh-5.svg){ width=120% }
+
+::: {.notes}
+- estimate between all attributes - features
+:::
+
+## Interacting Constraints
+![](LICS/drh-6.svg){ width=120% }
+
+## Interacting Constraints
+![](LICS/drh-7.svg){ width=120% }
+
+::: {.notes}
+- questions of different types.
+- epistemic, social, political, ...
+:::
+
+## Interacting Constraints
+![](LICS/drh-8.svg){ width=120% }
+
+::: {.notes}
+- A religion is a string of yes-no answers
+:::
+
+## Interacting Constraints
+![](LICS/drh-9.svg){ width=120% }
+
+::: {.notes}
+- Based on number of these bit-strings
+- Infer constraints (parameters)
+- Gives probability distribution over all states
+- We can build the "landscape" we talked about
+- We can put probabilities on unobserved configurations
 :::
 
 ## 
@@ -237,335 +314,14 @@ Did not face same challenges.
 - extreme practices (some of the rare features)
 :::
 
-## Overview of religions 
-![](geography.svg){ width=100%}
-
-::: {.notes}
-- pretty good coverage
-- not explicitly modeled
-:::
-
-## Overview of religions
-![](religion_age_included_lineplot.svg){ width=100% }
-
-::: {.notes}
-- pretty good coverage
-- take into account e.g. with regularization
-::: 
-
-# Data & model overview {.smaller}
-
-::: {.fragment .semi-out}
-- 20 binary questions (e.g. epistemic, social, etc.) is the basic level of analysis & they define a religion as a 20-dimensional cultural object in our analysis
-:::
-
-::: {.fragment .semi-out}
-- 407 total religions in our curated data set (with at most 5 unknown attributes for the 20 questions)
-:::
-
-::: {.fragment .semi-out}
-- Terminology alert: We refer to questions as "features" or "properties". Refer to particular set of answers to all 20 questions as a "configuration". 
-:::
-
-::: {.fragment .semi-out}
-- around 1 million possible configurations for 20 questions ($2^{20}$)
-:::
-
-::: {.fragment .semi-out}
-- 210 parameters (local fields, pairwise couplings)
-:::
-
-::: {.notes}
-- local fields: intrinsically biased towards yes / no
-- pairwise couplings: strongly coupled sympathetically / antipathetically; how strongly do they constrain each other; how much does learning one tell us about the other. 
-:::
-
-# Why build this model? {.smaller}
-::: {.fragment .semi-out}
-- $\mathcal{Q}_1$: What are the most probable, and the most improbable religious-cultural configurations? In particular, what does the topology of the religion "fitness landscape" look like? 
-:::
-
-::: {.fragment .semi-out}
-- $\mathcal{Q}_2$: What does the landscape model imply about dynamics and cultural evolution? 
-:::
-
-::: {.fragment .semi-out}
-- $\mathcal{Q}_3$: Can we reasonably capture fundamental and context-specific constraints on religious cultures? 
-:::
-
-::: {.notes}
-- Which are favored, which are disfavored?
-- jagged, smooth hill (e.g. local maxima, one big mountain). 
-- Fundamentally static model (fundamental constraints). 
-- e.g., both as predicted by common-sense & other work in religious studies. 
-:::
-
-# 
-![](pictures/entropy_mdpi.png)
-
-::: {.notes}
-- we try to answer some of those questions here
-- the focus on dynamics / cultural evolution in preprint. 
-:::
-
-## $\mathcal{Q}_1$: "Landscape" of religion 
-- What are the most probable, and the most improbable religious-cultural configurations? 
-
-- In particular, what does the topology of the religion "fitness landscape" look like?
-
-#  
-![](heatmap_observed.svg)
-
-::: {.notes}
-- counting (e.g. 8, 6, ...)
-- top row appears most times, ...
-- we only observe ~300 unique, complete configurations. 
-- cannot say anothing beyond these (and even this is not very informative). 
-:::
-
-# 
-![](heatmap_naive.svg)
-
-::: {.notes}
-- independent (naive) 
-- for each trait; probability of yes/no (i.e. mean). 
-- simply baseline. 
-- same as examples (earlier) 
-:::
-
-# 
-![](heatmap_model.svg)
-
-::: {.notes}
-- pretty "consistent" for the top configurations. 
-- most probable part of landscape will be most similar.
-- this just makes more sense (and the landscape implied by this model is very different from that implied by the independent baseline). 
-- problem is that landscape lives in 20 dimensions. 
-:::
-
-# Most likely religion
-![](most_likely.svg){ width=100% }
-
-::: {.notes}
-- big monitoring/punishing Gods.
-- state support
-- ritualistic
-- could have gotten this with naive approaches
-:::
-
-# Least likely religion
-![](least_likely.svg){ width=100% }
-
-::: {.notes}
-- not just "flipped" (as independent)
-- e.g., adult sacrifice rare (so we would expect on)
-- but couples super strongly with child sacrifice 
-- so this is more inconsistent
-- still, does not tell us too much 
-::: 
-
-## The "landscape" of religion
-![](DAG/landscape_4.svg){ width=80% }
-
-::: {.notes}
-- 150 most probable: ignoring parts of landscape (make it possible to approx.)
-- small slice 2^20 is 1m (40%)
-- size of configurations by probability (e.g. "stability", "coherence", ...)
-- Connected if they are direct neighbors (1 hamming).
-- clustered based on a hierarchical clustering algorithm (dendrogram). 
-- most correspond to observed religions (some more than one) but some are unobserved. 
-:::
-
-## The "landscape" of religion
-![](DAG/landscape_3.svg){ width=80% }
-
-::: {.notes}
-- what kinds occupy different parts of landscape. 
-- I want to be careful but...
-- Some structure: 
-  - Yellow: pre-Axial / indigenous. 
-  - Red: axial / highest-probability.
-  - Blue: spiritual and protestant "flood plain".
-- Temporal vs. non-temporal 
-- Bellah: "Religion in human evolution". 
-- fundamentally non-temporal; revisit; universal constraints
-:::
-
-
-## The "landscape" of religion
-![](DAG/landscape_annot.svg){ width=80%}
-
-::: {.notes}
-- archaic sacrificial grave traditions
-- ritualistic
-- difficult because negative... 
-:::
-
-## The "landscape" of religion
-![](DAG/landscape_2.svg){ width=80% }
-
-::: {.notes}
-- A scholar might be interested in a specific tradition. 
-- local probability region
-- local peak (at our resolution / our Q)
-- Would have to move through valley to get to Jehovah. 
-:::
-
-## The "landscape" of religion
-![](DAG/landscape_1.svg){ width=80% }
-
-::: {.notes}
-- Roman Imperial Cult (valley); 
-- Should tend to flow "upwards" in the landscape. 
-- Not predicted to be very stable by our landscape. 
-:::
-
-## The "landscape" of religion
-![](pictures/pagan-return.png){ width=70% }
-
-::: {.notes}
-- Fell over yesterday. 
-- Not clear that there is one-directional dynamic
-- Previous "solutions" might be revisited (e.g. spiritual, pagan) from SECULAR. 
-- Away from monotheistic, Abrahamic high-Gods.
-- "Temple of the Jedi" (go back to slide). 
-- Temporal; Spatial agnostic. 
-::: 
-
-# $\mathcal{Q}_2$: Dynamics 
-- Can we approach "dynamics" over the landscape of religious cultures?
-
-::: {.notes}
-- some ways we can start thinking about dynamics over the landscape which fundamentally encodes the static (universal) constraints 
-:::
-
-## Cultural Stability {.smaller}
-![](cognitive-attractors/svg/local_global_stability.svg){ width=70% }
-
-::: {.notes}
-- Stability on different timescales. 
-- Long enough timescales; baseline probability. 
-- Shorter timescales; local probability region (neighbors). 
-- Metastability. 
-- Glauber Dynamics (on average for 20 neighbors, sample a neighbor and stay or move based on relative prob)
-- Here all above 50% because these are the observed configurations. 
-- isolated peak, mountain range, hillock, valley. 
-- this gives a useful vocabulary to consider dynamics. 
-:::
-
-## Cultural Attractors {.smaller}
-![](cognitive-attractors/svg/Irish_Catholics_1017606.svg){ width=55%}
-
-::: {.notes}
-- Impose only flow upwards, terminate at local max. 
-- Multiple local maxima (terminate at one of three; pretty different). 
-- Explain colors
-- Explain size 
-- "supernatural punishment", (2) "special corpse treatment"
-- two indirect paths; "official political support" lost + regained (not Northern). 
-- attributes not adaptive in general; contextually. 
-:::
-
-## Cultural Attractors {.smaller}
-![](cognitive-attractors/attractors-table.png)
-
-::: {.notes}
-- all local maxima
-- starting from all observed configurations that are not already a local max. 
-- hill-climbing (of course dumb).
-- Not a straightforward relationship between prob. and delta that you attract from. 
-- Iban vs. Ancient Egypt (& neighbor w. Cistercians). 
-:::
-
-## Teaching & Enforcement
-
-![](pictures/tacit.png)
-
-::: {.notes}
-- inspired by Helena Miton
-- teaching/transmit cultural knowledge
-:::
-
-## Teaching & Enforcement 
-![](cognitive-attractors/svg/enforcement_hdi.svg){ width=70%}
-
-::: {.notes}
-- Enforce the most "fragile" properties
-- Might be unstable because of a few cultural competitors in local region of religious landscape. 
-- Might only be few local competitors
-- Funneling; often few competitors. 
-:::
-
-## Fluidity of cultural belief systems 
-![](cognitive-attractors/svg/number_enforced_first_five.svg){ width=70%}
-
-::: {.notes}
-- Some practices just really strongly favored or disfavored. 
-- We are starting from observed ...
-- The cultural competitors are practices that are (1) not generally strongly preferred or dispreferred & can be consonant with various other sets of practices. 
-- Generally non-epistemic and cognitive; but reincarnation.
-- Christianity; DK vs. Germany; 
-- (1) some things cannot easily be taught; (2) some things might not be taken as "necessary" by the religious community. 
-- maturation of religions; new sects extreme, then more mainstream (e.g. retaining only a core) - lifecycle. 
-:::
-
-# $\mathcal{Q}_3$: Constraints 
-- Fundamental & Context-Specific constraints on religious cultures
-
-## Monitoring & punishing Gods
-![](cognitive-attractors/monitor-punish.png){ width=100% }
-
-::: {.notes}
-- More cognitively coherent 
-- Model of human agency (care enough to punish). 
-- Need to monitor to punish? 
-  - no: e.g., karmic religions, call God up. 
-- Otiose Gods: 
-  - watch, but are lazy. 
-- some things are just weird.
-- fundamentally; Gods built on model of human agency (some cognitive dissonance, but this can exist). 
-:::
-
-## Monitoring & punishing Gods
-![](cognitive-attractors/monitor-punish.png){ width=100% }
-![](cognitive-attractors/monitor-punish-conditional.png){ width=100%}
-
-::: {.notes}
-- Secular institutions / outsourcing.
-- Norenzayan, scandinavia, dynamics
-- cognition: fundamental
-- state support: "contextual"
-- When state support, we might revert to previous "solutions"
-:::
-
-## Logic of the landscape 
-![](DAG/params-raw.svg){ width=85% }
-
-::: {.notes}
-- Local fields: intrinsic yes / no bias. 
-- Pairwise couplings: tendency to align / anti-align
-- Basically coefficients (e.g. logistic)
-:::
-
-## Logic of the landscape 
-![](DAG/params-match-1.svg){ width=85% }
-
-::: {.notes}
-- Pairwise correlations good guide to underlying constraints (positive correlation -> sympathetic). 
-:::
-
-## Logic of the landscape
-![](DAG/params-match-2.svg){ width=85% }
-
-## Logic of the landscape
-![](DAG/params-nomatch-1.svg){ width=85% }
-
 ## Logic of the landscape 
 ![](params/reference_params.svg){ width=75% }
 
 ::: {.notes}
-- now the actual questions
-- 35 strongest Jij 
+- We now have this (only 35 strongest couplings, constraints)
+- Usually, this is the level we would "stay" at (interpreting coefficients).
+- Actually, usually we would not even have a connected network like this. 
+- Informative, but of course observational and cannot be causally interpreted. 
 :::
 
 ## Logic of the landscape
@@ -601,19 +357,169 @@ Did not face same challenges.
 - dynamics
 ::: 
 
-## Logic of the landscape
+## Three Questions
+::: {.fragment .fade-in}
+- $\mathcal{Q}_1$: What are the most probable and the most improbable religious-cultural configurations? How are they organized in the topology of the religion "fitness landscape"?
+:::
+::: {.fragment .fade-in}
+- $\mathcal{Q}_2$: What does the landscape imply about dynamics and cultural evolution?
+:::
+::: {.fragment .fade-in}
+- $\mathcal{Q}_3$: Can we predict features of religions that are unknown to the field?
+:::
+
+::: {.notes}
+- That we cannot answer directly with parameters (e.g. from logistic)
+- Landscape topology and organization.
+- Dynamics and evolution. Fundamental and context.
+- Predict unknown (or missing) data. 
+::: 
+
+## $\mathcal{Q}_1$: "Landscape" of Religion 
+- What are the most probable and the most improbable religious-cultural configurations? How are they organized in the topology of the religion "fitness landscape"?
+
+## $\mathcal{Q}_1$: "Landscape" of Religion 
+![](DAG/landscape_4.svg){ width=80% }
+
+::: {.notes}
+- 150 most probable: ignoring parts of landscape (make it possible to approx.)
+- small slice 2^20 is 1m (40%)
+- size of configurations by probability (e.g. "stability", "coherence", ...)
+- Connected if they are direct neighbors (1 hamming).
+- clustered based on a hierarchical clustering algorithm (dendrogram). 
+- most correspond to observed religions (some more than one) but some are unobserved. 
+:::
+
+## $\mathcal{Q}_1$: "Landscape" of Religion 
+![](DAG/landscape_3.svg){ width=80% }
+
+::: {.notes}
+- what kinds occupy different parts of landscape. 
+- I want to be careful but...
+- Some structure: 
+  - Yellow: pre-Axial / indigenous. 
+  - Red: axial / highest-probability.
+  - Blue: spiritual and protestant "flood plain".
+- Temporal vs. non-temporal 
+- Bellah: "Religion in human evolution". 
+- fundamentally non-temporal; revisit; universal constraints
+:::
+
+## $\mathcal{Q}_1$: "Landscape" of Religion 
+![](DAG/landscape_annot.svg){ width=80%}
+
+::: {.notes}
+- archaic sacrificial grave traditions
+- ritualistic
+- difficult because negative... 
+:::
+
+## $\mathcal{Q}_1$: "Landscape" of Religion 
+![](DAG/landscape_2.svg){ width=80% }
+
+::: {.notes}
+- A scholar might be interested in a specific tradition. 
+- local probability region
+- local peak (at our resolution / our Q)
+- Would have to move through valley to get to Jehovah. 
+:::
+
+## $\mathcal{Q}_1$: "Landscape" of Religion 
+![](DAG/landscape_1.svg){ width=80% }
+
+::: {.notes}
+- Roman Imperial Cult (valley); 
+- Should tend to flow "upwards" in the landscape. 
+- Not predicted to be very stable by our landscape. 
+:::
+
+## $\mathcal{Q}_1$: "Landscape" of Religion 
+![](cognitive-attractors/monitor-punish.png){ width=100% }
+
+::: {.notes}
+- Landscape encodes more "fundamental" and "context specific" constraints
+- More cognitively coherent 
+- Model of human agency (care enough to punish). 
+- Need to monitor to punish? 
+  - no: e.g., karmic religions, call God up. 
+- Otiose Gods: 
+  - watch, but are lazy. 
+- some things are just weird.
+- fundamentally; Gods built on model of human agency (some cognitive dissonance, but this can exist). 
+:::
+
+## $\mathcal{Q}_1$: "Landscape" of Religion 
 ![](cognitive-attractors/monitor-punish.png){ width=100% }
 ![](cognitive-attractors/monitor-punish-conditional.png){ width=100%}
 
 ::: {.notes}
-- This is our preferred way of investigating dynamics currently
-- Taking all relevant pathways into account
-- Does not directly give us mechanism, causality, ...
-- Not directly parameters; but what they do. 
-- symmetry in parameter-space, assymetry in configuration space.
+- Secular institutions / outsourcing.
+- Norenzayan, scandinavia, dynamics
+- cognition: fundamental
+- state support: "contextual"
+- When state support, we might revert to previous "solutions"
 :::
 
-## Prediction
+## $\mathcal{Q}_2$: Dynamics & Equilibria
+What does the landscape imply about dynamics and cultural evolution, and can we capture fundamental and context-specific constraints on religious cultures?
+
+## $\mathcal{Q}_2$: Dynamics & Equilibria
+![](cognitive-attractors/svg/local_global_stability.svg){ width=60% }
+
+::: {.notes}
+- Stability on different timescales. 
+- Long enough timescales; baseline probability. 
+- Shorter timescales; local probability region (neighbors). 
+- Metastability. 
+- Glauber Dynamics (on average for 20 neighbors, sample a neighbor and stay or move based on relative prob)
+- Here all above 50% because these are the observed configurations. 
+- isolated peak, mountain range, hillock, valley. 
+- this gives a useful vocabulary to consider dynamics. 
+:::
+
+## $\mathcal{Q}_2$: Dynamics & Equilibria
+![](cognitive-attractors/svg/Irish_Catholics_1017606.svg){ width=55%}
+
+::: {.notes}
+- Impose only flow upwards, terminate at local max. 
+- Multiple local maxima (terminate at one of three; pretty different). 
+- Explain colors
+- Explain size 
+- "supernatural punishment", (2) "special corpse treatment"
+- two indirect paths; "official political support" lost + regained (not Northern). 
+- attributes not adaptive in general; contextually. 
+:::
+
+## $\mathcal{Q}_2$: Dynamics & Equilibria
+![](cognitive-attractors/attractors-table.png)
+
+::: {.notes}
+- all local maxima
+- starting from all observed configurations that are not already a local max. 
+- hill-climbing (of course dumb).
+- Not a straightforward relationship between prob. and delta that you attract from. 
+- Iban vs. Ancient Egypt (& neighbor w. Cistercians). 
+:::
+
+## $\mathcal{Q}_2$: Dynamics & Equilibria
+![](cognitive-attractors/svg/number_enforced_first_five.svg){ width=70%}
+
+::: {.notes}
+- Top practices "switch" most often when we evolve. 
+- High probability that if we "switch" we still get a reasonable cultural configuration (probability, coherence). Can be consonant with different combinations of other features. 
+- Generally non-epistemic and cognitive; but reincarnation is weird. 
+- Hierarchy: Protestantism in DK and Germany. 
+- Maturation of religions; extreme sects, then mainstream (retaining core).
+:::
+
+## $\mathcal{Q}_3$: Predicting Missing Data
+- Can we predict features of religions that are unknown to the field?
+
+::: {.notes}
+- yes we can!
+:::
+
+## $\mathcal{Q}_3$: Predicting Missing Data
 ::: {.fragment .fade-in}
 - Given the logic inferred from all religions we can predict attributes of a culture that are unknown to the field 
 :::
@@ -629,18 +535,42 @@ Did not face same challenges.
 ::: {.notes}
 - Of course child sacrifice rare
 - But Spartans do not have any of the other extreme properties, so what we are seeing is more than just that fact. 
+- Same with small-scale ritual (couples strongly to large-scale ritual in other observed data)
 ::: 
 
 # Next steps 
 
-## Topology with more questions
+## Bigger and Better {.smaller}
+::: {.column width="55%"}
+::: {.fragment .fade-in}
+- Interdisciplinary collaboration with the DRH
+:::
+::: {.fragment .fade-in}
+- Targeting relevant theoretical questions
+:::
+::: {.fragment .fade-in}
+- Scaling the model to more questions ($N \sim 40$) and combining data across polls 
+:::
+::: {.fragment .fade-in}
+- Implementing sampling/weighting scheme
+:::
+::: {.fragment .fade-in}
+- Extracting genealogies from the DRH
+:::
+:::
 
-![](rank_vs_normp.svg){ width=70% fig-align='center' }
+::: {.column width="5%"}
+:::
+
+::: {.column width="35%"}
+![](edwardslingerland.jpeg){ width=140%}
+:::
 
 ::: {.notes}
-- and better questions
-- preliminary 
-- n=20 much "steeper" yet. 
+- Edward Slingerland, Rachel Spicer, Willis Monroe
+- Scaling: Exponential, so hard. Might change the topology (e.g. more pointy, less "smushed out")
+- Sampling: Currently e.g., a lot of "Ancient Egypt": weight in time and space. 
+- Genealogies: getting closer to "causality" or at least using observed dynamics. 
 :::
 
 ## Hidden nodes & renormalization
@@ -668,81 +598,38 @@ Did not face same challenges.
 - some of this has been done
 :::
 
-## Explicit dynamics 
-::: {.fragment .semi-out}
-- Integrating temporal information to understand dynamics
-:::
+## New data
+- National Survey on Drug Use and Health (NSDUH)
 
-::: {.fragment .semi-out}
-- e.g., protestantism in Germany at time $t_1, t_2, \ldots, t_n$ 
+::: {.fragment .fade-in}
+![](mdma.png)
 :::
-
-::: {.fragment .semi-out}
-![](params/dynamics.svg){ width=100% fig-align='center' }
-::: 
 
 ::: {.notes}
-- DRH geneologies. 
-- Might need brief "collapse" before reform..., 
-- Not just hill-climbing probability.
+- we might have "bad" equilibria and "good" equilibria 
+- a coefficient does not really tell the full story about how the system works. 
 :::
-
-## Explicit dynamics
-- The 'big Gods' hypothesis (Norenzayan, 2013)
-
-![](norenzayan/norenzayan3.svg){ width=100% fig-align='center' }
-
-::: {.notes}
-- moralizing, punishing
-- prosocial behavior
-- cooperation between strangers
-- intergroup competition advantage
-:::
-
-## Explicit dynamics
-- The 'big Gods' hypothesis (Norenzayan, 2013)
-
-![](norenzayan/norenzayan2.svg){ width=100% fig-align='center' }
-
-::: {.notes}
-- e.g. Scandinavia
-- Really high trust in secular societies
-:::
-
-## Explicit dynamics
-- The 'big Gods' hypothesis (Norenzayan, 2013)
-
-![](norenzayan/norenzayan1.svg){ width=100% fig-align='center' }
-
-::: {.notes}
-- We can now stop believing in big Gods. 
-- & perhaps revert to older 'solutions' (or new ones)
-:::
-
-## Explicit dynamics
-![](pictures/pagan-return.png){ width=70%}
-
 
 # Take-home Messages {.smaller}
+
 ::: {.fragment .semi-out}
-- Religions are weirder than we think; keep open mind about what is possible and causal directions 
+- Moving beyond standard regression and obtaining a generative model of a full system of constraints opens up new questions and lenses to understand and explore complex systems.
 ::: 
+
 ::: {.fragment .semi-out}
-- We can infer a meaningful landscape of religious belief systems which captures temporal, contextual, and fundamental constraints
+- Outstanding issues around *causality* and *dynamics*. In particular, we do not have "Pearl Style" causality (uni-directional). Out-of-equilibrium we might think of causality as the natural dynamical drift into equilibrium but many possible "dynamics". 
 :::
+
 ::: {.fragment .semi-out}
-- Critical to consider time-scales & contextual favoring of traits
-:::
-::: {.fragment .semi-out}
-- Some features might be more/less defining of a particular religion than others
+- The method applies not only to religion (or culture). It has been used on various social and biological systems with interacting components (e.g., neurons). 
 :::
 
 # Thank you for your time {.smaller}
 - Joint work with Simon DeDeo (CMU, Santa Fe)
+- Get in touch if you are interested (victormoeller@gmail.com)
 - Thanks to the DRH (esp. Edward Slingerland, Rachel Spicer, and Willis Monroe)
 - Thanks to Lee and Daniels (2019) for sparring on Minimum Probability Flow (MPF)
 - "Inferring Cultural Landscapes with the Inverse Ising Model", Poulsen & Dedeo (2023) 
-- "Cognitive Attractors and the Cultural Evolution of Religion", Poulsen & DeDeo (submitted to COGSCI23)
 
 # Appendix 
 
@@ -827,3 +714,19 @@ $$ j = \{1, 0, X, X\}$$
 
 ## 3. Partial-MPF (missing data)
 ![](cultural-landscapes/partial-mpf.png){ width=70% }
+
+## Overview of religions 
+![](geography.svg){ width=100%}
+
+::: {.notes}
+- pretty good coverage
+- not explicitly modeled
+:::
+
+## Overview of religions
+![](religion_age_included_lineplot.svg){ width=100% }
+
+::: {.notes}
+- pretty good coverage
+- take into account e.g. with regularization
+::: 
