@@ -35,30 +35,12 @@ laboratory of social minds
 ::: 
 
 ## Why does culture look this way?
-Standard social science approach:
-
-- Linear (or logistic) regression.
-
-::: {.notes}
-- might regress on time to approach causality from observations.
-- might perform experiments to get causality. 
-:::
-
-## Why does culture look this way?
-![](LICS/intro-1.svg){ width="85%" }
+![](LICS/intro-2.svg){ width="85%" }
 
 ::: {.notes}
 observable phenomenon that we want to "explain" 
 with reference to how other variables covary, correlate,
 or even CAUSE this phenomenon. 
-:::
-
-## Why does culture look this way?
-![](LICS/intro-2.svg){ width="85%" }
-
-
-::: {.notes}
-- or "predictors"
 :::
 
 ## Why does culture look this way?
@@ -103,6 +85,7 @@ Large-scale society support moralizing Gods.
 Large-scale society also supports secular trends.
 Secular trends overtake moralizing Gods. 
 Scandinavia. 
+Conditional on some variables no effect. 
 :::
 
 ## The Landscape View 
@@ -113,16 +96,21 @@ Societies are subject to multiple *intersecting forces and constraints* that *pu
 ![](LICS/intro-8.svg){ width="80%" }
 
 ::: {.notes}
-conceptualize as one connected system of forces.
-connections are non-directed at parameter level,
-i.e. bi-directional constraints. 
+conceptualize as one connected system of forces (holistic)
+no "predictors" and "outcomes", everything constrains everything. 
 ::: 
 
 ## The Landscape View {.smaller}
 ::: {.column width="45%"} 
-Parameters (*pairwise constraints* and *local fields*) imply a probability distriubtion over *configurations*
-
-*Equilibrium points*: Locally (meta)stable solutions to the landscape. Interesting when multiple exist. Configurations "higher" in the landscape better balance constraints. 
+::: {.fragment .fade-in}
+Parameters (*pairwise couplings* and *local fields*) imply a probability distriubtion over *configurations*
+:::
+::: {.fragment .fade-in}
+Configurations *higher* in the landscape better balance constraints. 
+:::
+::: {.fragment .fade-in}
+*Equilibrium points*: Locally (meta)stable solutions to the landscape, and paths of transition between these. 
+:::
 :::
 
 ::: {.column width="45%"}
@@ -130,15 +118,10 @@ Parameters (*pairwise constraints* and *local fields*) imply a probability distr
 :::
 
 ::: {.notes}
-Based on parameters 
-This we do not get directly from parameters. 
-(i.e. the standard approach). 
-Interesting, e.g.:
-* We want to keep a system in a certain equilibrium
-* We want to push a system out of a bad equilibrium
-You could imagine this being interesting in many contexts: 
-e.g., we are looking at NSDUH now
-Drugs and mental health. 
+- landscape is all possible combinations of yes-no answers to questions. 
+- has dimension equal to number of questions included. 
+- Landscape we do not get directly from parameters of, say, a logistic regression. 
+- Equilibrium points: interesting if we have system where we want to either keep in certain equilibrium, or push out of. 
 :::
 
 ## Cultural Landscapes Paper {.smaller}
@@ -148,21 +131,28 @@ Drugs and mental health.
 :::
 
 ::: {.column width="45%" }
+::: {.fragment .fade-in}
 Can we infer a full landscape from data?
-
+:::
+::: {.fragment .fade-in}
 ... in high dimensions ($N \geq 20$)?
-
+:::
+::: {.fragment .fade-in}
 ... with small sample ($N < 500$)?
-
+:::
+::: {.fragment .fade-in}
 ... with partial data (NAN)?
-
+:::
+::: {.fragment .fade-in}
 ... with uncertain data?
+:::
 :::
 
 ::: {.notes}
-Salamander cortex patch.
-US Supreme court. 
-Did not face same challenges. 
+- case study / proof-of-concept basically. 
+- Salamander cortex patch.
+- US Supreme court. 
+- Did not face same challenges. 
 :::
 
 ## Cultural Landscapes Paper {.smaller}
@@ -171,15 +161,24 @@ Did not face same challenges.
 :::
 
 ::: {.column width="45% "}
+::: {.fragment .fade-in}
+- Pittsburgh Super Computer (PSC)
+:::
+::: {.fragment .fade-in}
 - Modification of Minimum Probability Flow (MPF) approximation
+:::
+::: {.fragment .fade-in}
 - Cross-validation, dynamically inferring missing data, weighting scheme for inconsistent data
-- On Github and should run in a couple of hours (please contact us, or raise an issue otherwise)
+:::
+::: {.fragment .fade-in}
+- On Github and should run in a couple of hours (please contact us, or raise an issue, otherwise)
+:::
 :::
 
 ::: {.notes}
 - Yes we can. 
 - Modifications to Minimum Probability Flow approximation. 
-- Some clever modifications to infer a lot of (basically) logistic regressions at the same time. 
+- Some clever modifications to infer a lot of (basically) logistic regressions at the same time. (Simon)
 :::
 
 ## Other implementations
@@ -287,7 +286,7 @@ Did not face same challenges.
 - We can put probabilities on unobserved configurations
 :::
 
-## 
+## Raw data
 ![](heatmap_questions.svg)
 
 ::: {.notes}
@@ -297,21 +296,6 @@ Did not face same challenges.
 - max 5 unanswered (e.g. unknown to field). 
 - 407 religions (at the time). 
 - some tend strongly yes; strongly no; mixed. 
-:::
-
-## Questions (1-10)
-![](cultural-landscapes/first_questions.png){ width=80% }
-
-::: {.notes}
-- not theoretically motivated
-- very diverse (cognitive, epistemic, social, political). 
-:::
-
-## Questions (11-20)
-![](cultural-landscapes/next-questions.png){ width=80% }
-
-::: {.notes}
-- extreme practices (some of the rare features)
 :::
 
 ## Logic of the landscape 
@@ -464,8 +448,23 @@ Did not face same challenges.
 What does the landscape imply about dynamics and cultural evolution, and can we capture fundamental and context-specific constraints on religious cultures?
 
 ## $\mathcal{Q}_2$: Dynamics & Equilibria
-![](cognitive-attractors/svg/local_global_stability.svg){ width=60% }
-
+::: {.column width="70%"}
+![](cognitive-attractors/svg/local_global_stability.svg){ width=120%}
+:::
+::: {.column width="28%"}
+::: {.fragment .fade-in}
+- isolated peak
+:::
+::: {.fragment .fade-in}
+- mountain range
+:::
+::: {.fragment .fade-in}
+- hillock
+:::
+::: {.fragment .fade-in}
+- valley
+:::
+:::
 ::: {.notes}
 - Stability on different timescales. 
 - Long enough timescales; baseline probability. 
@@ -473,12 +472,25 @@ What does the landscape imply about dynamics and cultural evolution, and can we 
 - Metastability. 
 - Glauber Dynamics (on average for 20 neighbors, sample a neighbor and stay or move based on relative prob)
 - Here all above 50% because these are the observed configurations. 
-- isolated peak, mountain range, hillock, valley. 
 - this gives a useful vocabulary to consider dynamics. 
 :::
 
 ## $\mathcal{Q}_2$: Dynamics & Equilibria
-![](cognitive-attractors/svg/Irish_Catholics_1017606.svg){ width=55%}
+::: {.column width="60%"}
+![](cognitive-attractors/svg/Irish_Catholics_1017606.svg){ width=80%}
+:::
+
+::: {.column width="35%"}
+::: {.fragment .fade-in}
+- Religious theocracy / caliphate
+:::
+::: {.fragment .fade-in}
+- Contemporary (US-style) evangelical
+:::
+::: {.fragment .fade-in}
+- Elite monastic order 
+:::
+:::
 
 ::: {.notes}
 - Impose only flow upwards, terminate at local max. 
@@ -502,14 +514,51 @@ What does the landscape imply about dynamics and cultural evolution, and can we 
 :::
 
 ## $\mathcal{Q}_2$: Dynamics & Equilibria
-![](cognitive-attractors/svg/number_enforced_first_five.svg){ width=70%}
+![](LICS/enforced-1.svg){ width=70%}
 
 ::: {.notes}
 - Top practices "switch" most often when we evolve. 
 - High probability that if we "switch" we still get a reasonable cultural configuration (probability, coherence). Can be consonant with different combinations of other features. 
 - Generally non-epistemic and cognitive; but reincarnation is weird. 
+:::
+
+## $\mathcal{Q}_2$: Dynamics & Equilibria
+![](LICS/enforced-2.svg){ width=70%}
+
+::: {.notes}
+- Only epistemic to be high which is weird.
+- Seems like it SHOULD be very defining. 
+:::
+
+## $\mathcal{Q}_2$: Dynamics & Equilibria
+![](LICS/enforced-3.svg){ width=70%}
+
+::: {.notes}
+- Political
+- DK and Germany protestantism
+:::
+
+## $\mathcal{Q}_2$: Dynamics & Equilibria
+![](LICS/enforced-4.svg){ width=70%}
+
+::: {.notes}
+- Social: but rare things (e.g. not small-scale ritual)
+:::
+
+## $\mathcal{Q}_2$: Dynamics & Equilibria
+![](LICS/enforced-5.svg){ width=70%}
+
+::: {.notes}
+- Acquisition of some features almost never make a religion more coherent (i.e. acquiring extreme practices). Just too disfavored (main effect). 
+:::
+
+## $\mathcal{Q}_2$: Dynamics & Equilibria
+![](LICS/enforced-6.svg){ width=70%}
+
+::: {.notes}
+- Loss of some features alsmost never make a religion more coherent (i.e. losing belief in afterlife). Just too generally favored (perhaps cognitive). 
 - Hierarchy: Protestantism in DK and Germany. 
-- Maturation of religions; extreme sects, then mainstream (retaining core).
+- Maturation of religions; extreme sects, then mainstream (retaining core). Extreme sects do not start in EQUILIBRIUM. 
 :::
 
 ## $\mathcal{Q}_3$: Predicting Missing Data
@@ -622,6 +671,13 @@ What does the landscape imply about dynamics and cultural evolution, and can we 
 
 ::: {.fragment .semi-out}
 - The method applies not only to religion (or culture). It has been used on various social and biological systems with interacting components (e.g., neurons). 
+:::
+
+::: {.notes}
+- Think of the case of cults in the US. 
+- Typically start extreme (out of equilibrium)
+- Gradually "soften" as they become mainstream.
+- Relaxing into equilibrium (which we might interpret as a kind of dynamics or causality). 
 :::
 
 # Thank you for your time {.smaller}
