@@ -28,6 +28,12 @@ resources:
 ![](cmu2.jpg)
 :::
 
+::: {.notes}
+Simon lovely + crazy genius vibe. 
+predoctoral fellowship
+laboratory of social minds
+::: 
+
 ## Why does culture look this way?
 Standard social science approach:
 Linear (or logistic) regression.
@@ -81,13 +87,6 @@ Secular trends overtake moralizing Gods.
 Scandinavia. 
 :::
 
-## Dangers 3: control
-![](LICS/intro-6.svg){ width="85%" }
-
-::: {.notes}
-e.g., trust in secular institutions suggested. 
-:::
-
 ## The Landscape View 
 Societies are subject to multiple *intersecting forces and constraints* that *put demands on their features*. Some configurations better balance these constraints.  
 
@@ -95,13 +94,17 @@ Societies are subject to multiple *intersecting forces and constraints* that *pu
 Societies are subject to multiple *intersecting forces and constraints* that *put demands on their features*. Some configurations better balance these constraints.  
 ![](LICS/intro-8.svg){ width="80%" }
 
+::: {.notes}
+conceptualize as one connected system of forces.
+connections are non-directed at parameter level,
+i.e. bi-directional constraints. 
+::: 
+
 ## The Landscape View {.smaller}
-::: {.column width="45%"}
-Societies are subject to multiple *intersecting forces and constraints* that *put demands on their features*. Some configurations better balance these constraints. 
-
-*Equilibrium points*: Locally (meta)stable solutions to the landscape. Interesting when multiple exist. 
-
+::: {.column width="45%"} 
 Parameters (*pairwise constraints* and *local fields*) imply a probability distriubtion over *configurations*
+
+*Equilibrium points*: Locally (meta)stable solutions to the landscape. Interesting when multiple exist. Configurations "higher" in the landscape better balance constraints. 
 :::
 
 ::: {.column width="45%"}
@@ -109,6 +112,7 @@ Parameters (*pairwise constraints* and *local fields*) imply a probability distr
 :::
 
 ::: {.notes}
+Based on parameters 
 This we do not get directly from parameters. 
 (i.e. the standard approach). 
 Interesting, e.g.:
@@ -119,54 +123,83 @@ e.g., we are looking at NSDUH now
 Drugs and mental health. 
 :::
 
-## Cultural Landscapes Paper
-... continue ...
-
-## Social Landscapes
-::: {.column width="45%"}
-![](related/court.png){ width=400px }
+## Cultural Landscapes Paper {.smaller}
+::: {.column width="45%" }
+![](pictures/entropy_mdpi.png)
+![](fitness-landscape.png)
 :::
 
-::: {.column width="45%"}
-![](related/court-independence.png){ width=500px }
-:::
+::: {.column width="45%" }
+Can we infer a full landscape from data?
 
-::: {.fragment .semi-out}
-"Statistical Mechanics of the US Supreme Court", Lee et al. (2015)
-:::
+... in high dimensions ($N \geq 20$)?
 
-::: {.notes}
-- different domains: (social, biological systems)
-- elements binary, interactions between micro-level features important for macro-level behavior
-- Eddie Lee (coniii) - who has been really helpful
-- mostly positive (sympathetic) couplings 
-- sympathetic couplings -> unanimous decisions
-- makes it pretty clear WHICH judge you have to "swing"
-:::
+... with small sample ($N < 500$)?
 
-## Neural Landscapes 
-::: {.column width="45%"}
-![](related/neurons-independence.png){ width=500px }
-:::
+... with partial data (NAN)?
 
-::: {.column width="45%"}
-![](related/neurons.png){ width=400px }
-:::
-
-::: {.fragment .semi-out}
-"Weak pairwise correlations imply strongly correlated network states in a neural population", Schneidman et al. (2006)
+... with uncertain data?
 :::
 
 ::: {.notes}
-- retinal ganglion cells in salamander
-- very weakly correlated; suggesting approx. independence
-- some (macro)configurations virtually impossible with independent model. 
-- blue: tends to Poisson 
-- red: tends to exponential 
-- higher-order interactions
+Salamander cortex patch.
+US Supreme court. 
+Did not face same challenges. 
 :::
 
-## Religious landscapes? (DRH)
+## Cultural Landscapes Paper {.smaller}
+::: {.column width="45%" }
+![](PSC.png)
+:::
+
+::: {.column width="45% "}
+- Modification of Minimum Probability Flow (MPF) approximation
+- Cross-validation, dynamically inferring missing data, weighting scheme for inconsistent data
+- On Github and should run in a couple of hours (please contact us, or raise an issue otherwise)
+:::
+
+::: {.notes}
+- Yes we can. 
+- Modifications to Minimum Probability Flow approximation. 
+- Some clever modifications to infer a lot of (basically) logistic regressions at the same time. 
+:::
+
+## Other implementations
+::: {.column width="45%" }
+![](coniii.png)
+
+- Python implementation
+- Multiple samplers 
+- Simple to use 
+:::
+
+::: {.notes}
+- Both exact (small N) and samplers 
+:::
+
+## Other implementations
+
+::: {.column width="45%" }
+![](coniii.png)
+
+- Python implementation
+- Multiple samplers 
+- Simple to use 
+:::
+
+::: {.column width="45%" }
+![](eLasso)
+
+- R implementation
+- Based on combining logistics
+- No personal experience
+:::
+
+::: {.notes}
+- ...
+:::
+
+## Religious landscapes (DRH)
 ![](pictures/DRH.png)
 
 ::: {.notes}
